@@ -391,6 +391,142 @@ body {
   transition: all 0.2s ease;
 }
 .discord-btn:hover { background: #4752c4; transform: translateY(-1px); }
+
+/* ─── PARLAY SECTION ─── */
+.parlay-section {
+  margin-bottom: 24px;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.section-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.parlay-card {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(139,92,246,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.parlay-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.parlay-badge-2 {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+}
+.parlay-odds {
+  font-size: 36px;
+  font-weight: 900;
+  color: #a855f7;
+  margin: 8px 0 16px;
+}
+.parlay-odds-2 {
+  color: #3b82f6;
+}
+
+.legs-list {
+  background: rgba(0,0,0,0.25);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.leg:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.leg:first-child {
+  padding-top: 0;
+}
+.leg-icon {
+  font-size: 16px;
+  width: 24px;
+  text-align: center;
+}
+.leg-text {
+  flex: 1;
+  font-size: 13px;
+  color: #ddd;
+}
+.leg-odds {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a855f7;
+  background: rgba(139,92,246,0.15);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.parlay-slip-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.parlay-payout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(0,0,0,0.3);
+  padding: 16px;
+  border-radius: 12px;
+}
+.payout-item {
+  text-align: center;
+}
+.payout-label {
+  display: block;
+  font-size: 10px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.payout-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+.payout-big {
+  font-size: 24px;
+  color: #a855f7;
+}
+.payout-arrow {
+  font-size: 20px;
+  color: #555;
+  font-weight: 700;
+}
 </style>
 </head>
 <body>
@@ -533,6 +669,105 @@ body {
         <span class="confidence-label">Confidence:</span>
         <span style="font-size:16px;">🔥🔥🔥🔥</span>
         <span style="color:#555;font-size:11px;">(4/5)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARLAY OF THE DAY -->
+  <div class="parlay-section">
+    <div class="section-header">
+      <h2>🎰 PARLAY OF THE DAY</h2>
+      <p class="section-note">*Separate from bankroll build — bonus plays</p>
+    </div>
+
+    <!-- Parlay 1 -->
+    <div class="parlay-card parlay-1">
+      <div class="parlay-badge">5 Leg Parlay</div>
+      <div class="parlay-odds">+1290</div>
+      
+      <div class="legs-list">
+        <div class="leg">
+          <span class="leg-icon">⚾</span>
+          <span class="leg-text">TB @ STL Over 7.5 Runs</span>
+          <span class="leg-odds">+102</span>
+        </div>
+        <div class="leg">
+          <span class="leg-icon">🐻</span>
+          <span class="leg-text">Chicago Cubs ML</span>
+          <span class="leg-odds">-245</span>
+        </div>
+        <div class="leg">
+          <span class="leg-icon">🐦</span>
+          <span class="leg-text">Toronto Blue Jays ML</span>
+          <span class="leg-odds">-190</span>
+        </div>
+        <div class="leg">
+          <span class="leg-icon">🐦‍⬛</span>
+          <span class="leg-text">Baltimore Orioles ML</span>
+          <span class="leg-odds">-162</span>
+        </div>
+        <div class="leg">
+          <span class="leg-icon">⚾</span>
+          <span class="leg-text">PIT @ NYM Over 7.5 Runs</span>
+          <span class="leg-odds">-102</span>
+        </div>
+      </div>
+
+      <img src="parlay1-2026-03-28.jpg" alt="5 Leg Parlay Slip" class="parlay-slip-img">
+
+      <div class="parlay-payout">
+        <div class="payout-item">
+          <span class="payout-label">Wager</span>
+          <span class="payout-val">$20.00</span>
+        </div>
+        <div class="payout-arrow">→</div>
+        <div class="payout-item">
+          <span class="payout-label">Payout</span>
+          <span class="payout-val payout-big">$278.11</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parlay 2 -->
+    <div class="parlay-card parlay-2">
+      <div class="parlay-badge parlay-badge-2">4 Leg Parlay</div>
+      <div class="parlay-odds parlay-odds-2">+668</div>
+      
+      <div class="legs-list">
+        <div class="leg">
+          <span class="leg-icon">⚾</span>
+          <span class="leg-text">TB @ STL Over 7.5 Runs</span>
+          <span class="leg-odds">+102</span>
+        </div>
+        <div class="leg">
+          <span class="leg-icon">👤</span>
+          <span class="leg-text">Pete Crow-Armstrong 2+ H+R+RBI</span>
+          <span class="leg-odds">-185</span>
+        </div>
+        <div class="leg">
+          <span class="leg-icon">🐦</span>
+          <span class="leg-text">Toronto Blue Jays ML</span>
+          <span class="leg-odds">-190</span>
+        </div>
+        <div class="leg">
+          <span class="leg-icon">🐦‍⬛</span>
+          <span class="leg-text">Baltimore Orioles ML</span>
+          <span class="leg-odds">-162</span>
+        </div>
+      </div>
+
+      <img src="parlay2-2026-03-28.jpg" alt="4 Leg Parlay Slip" class="parlay-slip-img">
+
+      <div class="parlay-payout">
+        <div class="payout-item">
+          <span class="payout-label">Wager</span>
+          <span class="payout-val">$17.00</span>
+        </div>
+        <div class="payout-arrow">→</div>
+        <div class="payout-item">
+          <span class="payout-label">Payout</span>
+          <span class="payout-val payout-big">$130.59</span>
+        </div>
       </div>
     </div>
   </div>
