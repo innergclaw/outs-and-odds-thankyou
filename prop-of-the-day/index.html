@@ -8,7 +8,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+  background: #0a0a0a;
   color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
@@ -16,26 +16,189 @@ body {
 .container {
   max-width: 640px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 32px 16px 60px;
 }
+
+/* ─── HEADER ─── */
 .header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
+}
+.header .logo {
+  font-size: 14px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
 }
 .header h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   background: linear-gradient(135deg, #10b981, #34d399);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.header .date {
-  color: #666;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.header .subtitle {
+  color: #555;
+  font-size: 13px;
+  margin-top: 6px;
 }
+
+/* ─── BANKROLL TRACKER ─── */
+.tracker {
+  background: linear-gradient(135deg, #0d1117, #161b22);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.tracker-title {
+  font-size: 13px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+.bankroll-total {
+  font-size: 13px;
+  color: #10b981;
+  font-weight: 700;
+}
+
+/* Progress bar */
+.progress-bar {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  height: 8px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #059669, #10b981, #34d399);
+  transition: width 0.6s ease;
+}
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+.progress-labels span {
+  font-size: 11px;
+  color: #555;
+}
+
+/* Day entries */
+.day-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+.day-entry:first-of-type {
+  border-top: none;
+}
+
+/* Timeline dot */
+.timeline-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.dot-won {
+  background: rgba(16,185,129,0.15);
+  border: 2px solid #10b981;
+  color: #10b981;
+}
+.dot-active {
+  background: rgba(234,179,8,0.15);
+  border: 2px solid #eab308;
+  color: #eab308;
+  animation: pulse 2s infinite;
+}
+.dot-upcoming {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid #333;
+  color: #555;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(234,179,8,0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(234,179,8,0); }
+}
+
+.day-info { flex: 1; }
+.day-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.day-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.day-status {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.status-won {
+  background: rgba(16,185,129,0.15);
+  color: #10b981;
+}
+.status-live {
+  background: rgba(234,179,8,0.15);
+  color: #eab308;
+}
+.day-pick {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.day-matchup {
+  font-size: 12px;
+  color: #666;
+}
+.day-money {
+  text-align: right;
+  flex-shrink: 0;
+}
+.day-wager {
+  font-size: 12px;
+  color: #666;
+}
+.day-result {
+  font-size: 16px;
+  font-weight: 800;
+}
+.money-won { color: #10b981; }
+.money-pending { color: #eab308; }
+
+/* ─── CURRENT PROP CARD ─── */
 .prop-card {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   border-radius: 16px;
@@ -50,30 +213,30 @@ body {
   color: #fff;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   margin-bottom: 16px;
 }
 .player-name {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
   margin-bottom: 4px;
 }
 .prop-type {
   color: #888;
-  font-size: 14px;
-  margin-bottom: 12px;
+  font-size: 13px;
+  margin-bottom: 16px;
 }
 .line-box {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .over {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 900;
   color: #10b981;
 }
@@ -81,220 +244,308 @@ body {
   color: #aaa;
   font-size: 13px;
 }
-.odds {
+.odds-badge {
   background: #10b981;
   color: #000;
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 6px;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
 }
-.matchup {
+.matchup-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: #888;
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 20px;
 }
-.matchup .vs { color: #444; }
-.game-time {
-  background: rgba(255,255,255,0.05);
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  color: #aaa;
-}
-.bet-slip {
-  background: rgba(16,185,129,0.08);
-  border: 1px solid rgba(16,185,129,0.2);
+.matchup-row .vs { color: #444; }
+
+/* Bet slip */
+.slip {
+  background: rgba(16,185,129,0.06);
+  border: 1px solid rgba(16,185,129,0.15);
   border-radius: 12px;
   padding: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-.bet-slip img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-.bet-slip h3 {
-  font-size: 14px;
+.slip-label {
+  font-size: 12px;
   color: #888;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 12px;
+  font-weight: 700;
 }
-.bet-details {
+.slip img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+.slip-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
-.bet-item {
+.slip-item {
   background: rgba(0,0,0,0.3);
-  padding: 12px 16px;
+  padding: 12px 14px;
   border-radius: 8px;
 }
-.bet-item .label {
-  font-size: 11px;
-  color: #666;
+.slip-item .lbl {
+  font-size: 10px;
+  color: #555;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
 }
-.bet-item .value {
-  font-size: 20px;
+.slip-item .val {
+  font-size: 18px;
   font-weight: 700;
   color: #10b981;
 }
-.analysis {
-  background: rgba(255,255,255,0.03);
-  border-radius: 12px;
-  padding: 24px;
-}
-.analysis h3 {
-  font-size: 14px;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
-}
-.analysis p {
-  color: #aaa;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-.analysis p:last-child { margin-bottom: 0; }
+
+/* Stats */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
   margin: 16px 0;
 }
 .stat-box {
-  background: rgba(0,0,0,0.2);
-  padding: 16px;
+  background: rgba(0,0,0,0.25);
+  padding: 14px 8px;
   border-radius: 8px;
   text-align: center;
 }
-.stat-box .number {
-  font-size: 24px;
+.stat-box .num {
+  font-size: 20px;
   font-weight: 800;
   color: #10b981;
 }
-.stat-box .label {
-  font-size: 11px;
-  color: #666;
+.stat-box .lbl {
+  font-size: 10px;
+  color: #555;
   text-transform: uppercase;
   margin-top: 4px;
 }
+
+/* Analysis */
+.analysis {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 20px;
+}
+.analysis h3 {
+  font-size: 13px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.analysis p {
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.analysis p:last-child { margin-bottom: 0; }
 .confidence {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 .confidence-label {
-  font-size: 12px;
-  color: #888;
+  font-size: 11px;
+  color: #666;
   text-transform: uppercase;
 }
-.fire {
-  font-size: 18px;
-}
+
+/* ─── FOOTER ─── */
 .footer {
   text-align: center;
-  padding: 32px 20px;
-  color: #555;
-  font-size: 12px;
+  padding: 24px 16px;
+  color: #444;
+  font-size: 11px;
   border-top: 1px solid rgba(255,255,255,0.05);
-  margin-top: 20px;
+  margin-top: 12px;
 }
 .footer a {
   color: #10b981;
   text-decoration: none;
 }
+.discord-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #5865F2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+.discord-btn:hover { background: #4752c4; transform: translateY(-1px); }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- HEADER -->
   <div class="header">
-    <div class="date">Saturday, March 28, 2026</div>
-    <h1>🔥 PROP OF THE DAY</h1>
+    <div class="logo">⚾ Outs & Odds</div>
+    <h1>PROP OF THE DAY</h1>
+    <div class="subtitle">Bankroll building — 1 play a day 👨‍🔬</div>
   </div>
 
+  <!-- BANKROLL TRACKER -->
+  <div class="tracker">
+    <div class="tracker-header">
+      <span class="tracker-title">📈 Bankroll Tracker</span>
+      <span class="bankroll-total">Started: $10</span>
+    </div>
+
+    <!-- Progress bar: $10 start, $36.47 potential, $100 goal -->
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 19.43%;"></div>
+    </div>
+    <div class="progress-labels">
+      <span>$10</span>
+      <span>Goal: $100</span>
+    </div>
+
+    <!-- DAY 1 — WON ✅ -->
+    <div class="day-entry">
+      <div class="timeline-dot dot-won">✓</div>
+      <div class="day-info">
+        <div class="day-label">
+          <span class="day-num">Day 1 — Mar 27</span>
+          <span class="day-status status-won">WON ✅</span>
+        </div>
+        <div class="day-pick">Cam Schlittler Over 4.5 K's</div>
+        <div class="day-matchup">Tampa Bay Rays Pitcher</div>
+      </div>
+      <div class="day-money">
+        <div class="day-wager">$10.00</div>
+        <div class="day-result money-won">→ $19.43</div>
+      </div>
+    </div>
+
+    <!-- DAY 2 — ACTIVE ⏳ -->
+    <div class="day-entry">
+      <div class="timeline-dot dot-active">2</div>
+      <div class="day-info">
+        <div class="day-label">
+          <span class="day-num">Day 2 — Mar 28</span>
+          <span class="day-status status-live">LIVE ⏳</span>
+        </div>
+        <div class="day-pick">Sean Burke Over 14.5 Outs</div>
+        <div class="day-matchup">White Sox @ Brewers — 7:11 PM ET</div>
+      </div>
+      <div class="day-money">
+        <div class="day-wager">$19.43</div>
+        <div class="day-result money-pending">→ $36.47</div>
+      </div>
+    </div>
+
+    <!-- DAY 3 — UPCOMING -->
+    <div class="day-entry">
+      <div class="timeline-dot dot-upcoming">3</div>
+      <div class="day-info">
+        <div class="day-label">
+          <span class="day-num">Day 3 — Mar 29</span>
+        </div>
+        <div class="day-pick" style="color:#555;">TBD</div>
+        <div class="day-matchup">Tomorrow's pick drops at 10 AM</div>
+      </div>
+      <div class="day-money">
+        <div class="day-result" style="color:#555;">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURRENT PROP CARD -->
   <div class="prop-card">
-    <div class="badge">Today's Pick</div>
+    <div class="badge">🔥 Day 2 — Today's Pick</div>
     <div class="player-name">Sean Burke</div>
     <div class="prop-type">Chicago White Sox — Pitcher</div>
-    
+
     <div class="line-box">
       <span class="over">O 14.5</span>
       <span class="line-detail">Outs Recorded</span>
-      <span class="odds">-114</span>
+      <span class="odds-badge">-114</span>
     </div>
-    
-    <div class="matchup">
+
+    <div class="matchup-row">
       <span>White Sox</span>
       <span class="vs">@</span>
       <span>Brewers</span>
-      <span class="game-time">📍 7:11 PM ET</span>
+      <span style="margin-left:auto;background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:6px;">📍 7:11 PM ET</span>
     </div>
 
-    <div class="bet-slip">
-      <h3>✅ Locked In</h3>
-      <img src="prop-of-day-2026-03-28.jpg" alt="Sean Burke O 14.5 Outs Bet Slip">
-      <div class="bet-details">
-        <div class="bet-item">
-          <div class="label">Wager</div>
-          <div class="value">$19.43</div>
+    <!-- Bet Slip -->
+    <div class="slip">
+      <div class="slip-label">✅ Locked In</div>
+      <img src="prop-of-day-2026-03-28.jpg" alt="Sean Burke O 14.5 Outs — Bet Slip">
+      <div class="slip-grid">
+        <div class="slip-item">
+          <div class="lbl">Wager</div>
+          <div class="val">$19.43</div>
         </div>
-        <div class="bet-item">
-          <div class="label">To Win</div>
-          <div class="value">$17.04</div>
+        <div class="slip-item">
+          <div class="lbl">To Win</div>
+          <div class="val">$17.04</div>
         </div>
       </div>
     </div>
 
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="num">6.1</div>
+        <div class="lbl">IP/Start</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">18.3</div>
+        <div class="lbl">Outs Avg</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">4.22</div>
+        <div class="lbl">ERA</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">+3.8</div>
+        <div class="lbl">Edge</div>
+      </div>
+    </div>
+
+    <!-- Analysis -->
     <div class="analysis">
-      <h3>🧠 The Edge</h3>
-      <p>Burke is an innings eater. He averages <strong>6.1 innings per start</strong> (18.3 outs), giving nearly <strong>4 outs of cushion</strong> against a 14.5 line.</p>
-      
-      <div class="stats-grid">
-        <div class="stat-box">
-          <div class="number">6.1</div>
-          <div class="label">IP/start</div>
-        </div>
-        <div class="stat-box">
-          <div class="number">18.3</div>
-          <div class="label">Outs avg</div>
-        </div>
-        <div class="stat-box">
-          <div class="number">4.22</div>
-          <div class="label">ERA</div>
-        </div>
-        <div class="stat-box">
-          <div class="number">+3.8</div>
-          <div class="label">Edge</div>
-        </div>
-      </div>
-
-      <p>Milwaukee's contact-heavy lineup (23% K rate) plays into Burke's pitch-to-contact style. At -114, the value is locked in.</p>
-
+      <h3>🧠 Why This Play</h3>
+      <p>Burke is an innings eater. He averages <strong style="color:#fff;">6.1 innings per start</strong> (18.3 outs), giving nearly <strong style="color:#10b981;">4 outs of cushion</strong> against a 14.5 line.</p>
+      <p>Milwaukee's contact-heavy lineup (23% K rate) means more balls in play — and more outs recorded. At -114 on FanDuel, the value is locked in.</p>
       <div class="confidence">
         <span class="confidence-label">Confidence:</span>
-        <span class="fire">🔥🔥🔥🔥</span>
-        <span style="color:#666;font-size:12px;">(4/5)</span>
+        <span style="font-size:16px;">🔥🔥🔥🔥</span>
+        <span style="color:#555;font-size:11px;">(4/5)</span>
       </div>
     </div>
   </div>
 
+  <!-- CTA -->
+  <div style="text-align:center;margin:24px 0;">
+    <a href="https://discord.gg/Y2xw5JTbEW" class="discord-btn">Join Outs & Odds Discord →</a>
+  </div>
+
+  <!-- FOOTER -->
   <div class="footer">
-    <p>⚾ <strong>Outs and Odds</strong> — Powered by InnerG Intel</p>
-    <p style="margin-top:8px;">Not financial advice. Bet responsibly.</p>
-    <p style="margin-top:12px;">📊 <a href="daily-picks-output.md">View All Today's Picks</a></p>
+    <p>⚾ <strong>Outs & Odds</strong> — 1 play a day. Bankroll building. 👨‍🔬</p>
+    <p style="margin-top:6px;">Not financial advice. Bet responsibly.</p>
   </div>
 </div>
 </body>
