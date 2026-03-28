@@ -415,6 +415,73 @@ body {
   font-style: italic;
 }
 
+/* Dropdown day accordion */
+.parlay-day {
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #0d0b1a, #131128);
+  overflow: hidden;
+}
+.parlay-day summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.2s;
+}
+.parlay-day summary:hover {
+  background: rgba(139,92,246,0.06);
+}
+.parlay-day summary::-webkit-details-marker { display: none; }
+.parlay-day[open] summary {
+  border-bottom: 1px solid rgba(139,92,246,0.1);
+}
+.day-arrow {
+  font-size: 12px;
+  color: #555;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.parlay-day[open] .day-arrow {
+  transform: rotate(90deg);
+}
+.day-summary-info {
+  flex: 1;
+}
+.day-summary-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ddd;
+}
+.day-summary-sub {
+  font-size: 11px;
+  color: #666;
+  margin-top: 2px;
+}
+.day-summary-result {
+  text-align: right;
+  flex-shrink: 0;
+}
+.day-summary-record {
+  font-size: 13px;
+  font-weight: 700;
+}
+.record-loss { color: #ef4444; }
+.record-win { color: #10b981; }
+.record-pending { color: #eab308; }
+.day-summary-amount {
+  font-size: 11px;
+  color: #666;
+  margin-top: 2px;
+}
+.parlay-day-content {
+  padding: 16px 20px 20px;
+}
+
 .parlay-card {
   background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
   border-radius: 16px;
@@ -423,6 +490,7 @@ body {
   border: 1px solid rgba(139,92,246,0.25);
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
+.parlay-card:last-child { margin-bottom: 0; }
 .parlay-badge {
   display: inline-block;
   background: linear-gradient(135deg, #7c3aed, #8b5cf6);
@@ -680,96 +748,115 @@ body {
       <p class="section-note">*Separate from bankroll build — bonus plays</p>
     </div>
 
-    <!-- Parlay 1 -->
-    <div class="parlay-card parlay-1" style="opacity:0.7;">
-      <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">5 Leg Parlay — LOST ❌</div>
-      <div class="parlay-odds" style="color:#ef4444;">+1290</div>
-      
-      <div class="legs-list">
-        <div class="leg">
-          <span class="leg-icon">✅</span>
-          <span class="leg-text">TB @ STL Over 7.5 Runs <span style="color:#10b981;font-size:11px;">(Total: 11)</span></span>
-          <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
+    <!-- DAY 2 — Mar 28 -->
+    <details class="parlay-day" open>
+      <summary>
+        <span class="day-arrow">▶</span>
+        <div class="day-summary-info">
+          <div class="day-summary-title">Day 2 — Saturday, Mar 28</div>
+          <div class="day-summary-sub">2 parlays • 5-leg & 4-leg</div>
         </div>
-        <div class="leg">
-          <span class="leg-icon">✅</span>
-          <span class="leg-text">Chicago Cubs ML <span style="color:#10b981;font-size:11px;">(CHC 10, WSH 2)</span></span>
-          <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
+        <div class="day-summary-result">
+          <div class="day-summary-record record-loss">0-2 ❌</div>
+          <div class="day-summary-amount">-$37.00</div>
         </div>
-        <div class="leg">
-          <span class="leg-icon">✅</span>
-          <span class="leg-text">Toronto Blue Jays ML <span style="color:#10b981;font-size:11px;">(TOR 8, OAK 7)</span></span>
-          <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
+      </summary>
+      <div class="parlay-day-content">
+
+        <!-- Parlay 1 -->
+        <div class="parlay-card" style="opacity:0.7;">
+          <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">5 Leg Parlay — LOST ❌</div>
+          <div class="parlay-odds" style="color:#ef4444;">+1290</div>
+          
+          <div class="legs-list">
+            <div class="leg">
+              <span class="leg-icon">✅</span>
+              <span class="leg-text">TB @ STL Over 7.5 Runs <span style="color:#10b981;font-size:11px;">(Total: 11)</span></span>
+              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
+            </div>
+            <div class="leg">
+              <span class="leg-icon">✅</span>
+              <span class="leg-text">Chicago Cubs ML <span style="color:#10b981;font-size:11px;">(CHC 10, WSH 2)</span></span>
+              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
+            </div>
+            <div class="leg">
+              <span class="leg-icon">✅</span>
+              <span class="leg-text">Toronto Blue Jays ML <span style="color:#10b981;font-size:11px;">(TOR 8, OAK 7)</span></span>
+              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
+            </div>
+            <div class="leg">
+              <span class="leg-icon">❌</span>
+              <span class="leg-text" style="color:#ef4444;">Baltimore Orioles ML <span style="font-size:11px;">(BAL 1, MIN 4)</span></span>
+              <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
+            </div>
+            <div class="leg">
+              <span class="leg-icon">❌</span>
+              <span class="leg-text" style="color:#ef4444;">PIT @ NYM Over 7.5 Runs <span style="font-size:11px;">(Total: 2)</span></span>
+              <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
+            </div>
+          </div>
+
+          <img src="parlay1-2026-03-28.jpg" alt="5 Leg Parlay Slip" class="parlay-slip-img">
+
+          <div class="parlay-payout" style="border:1px solid rgba(239,68,68,0.2);">
+            <div class="payout-item">
+              <span class="payout-label">Wagered</span>
+              <span class="payout-val" style="color:#ef4444;">-$20.00</span>
+            </div>
+            <div class="payout-arrow">→</div>
+            <div class="payout-item">
+              <span class="payout-label">Result</span>
+              <span class="payout-val payout-big" style="color:#ef4444;">LOST</span>
+            </div>
+          </div>
         </div>
-        <div class="leg">
-          <span class="leg-icon">❌</span>
-          <span class="leg-text" style="color:#ef4444;">Baltimore Orioles ML <span style="font-size:11px;">(BAL 1, MIN 4)</span></span>
-          <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
+
+        <!-- Parlay 2 -->
+        <div class="parlay-card" style="opacity:0.7;">
+          <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">4 Leg Parlay — LOST ❌</div>
+          <div class="parlay-odds" style="color:#ef4444;">+668</div>
+          
+          <div class="legs-list">
+            <div class="leg">
+              <span class="leg-icon">✅</span>
+              <span class="leg-text">TB @ STL Over 7.5 Runs <span style="color:#10b981;font-size:11px;">(Total: 11)</span></span>
+              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
+            </div>
+            <div class="leg">
+              <span class="leg-icon">👤</span>
+              <span class="leg-text">Pete Crow-Armstrong 2+ H+R+RBI</span>
+              <span class="leg-odds">TBD</span>
+            </div>
+            <div class="leg">
+              <span class="leg-icon">✅</span>
+              <span class="leg-text">Toronto Blue Jays ML <span style="color:#10b981;font-size:11px;">(TOR 8, OAK 7)</span></span>
+              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
+            </div>
+            <div class="leg">
+              <span class="leg-icon">❌</span>
+              <span class="leg-text" style="color:#ef4444;">Baltimore Orioles ML <span style="font-size:11px;">(BAL 1, MIN 4)</span></span>
+              <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
+            </div>
+          </div>
+
+          <img src="parlay2-2026-03-28.jpg" alt="4 Leg Parlay Slip" class="parlay-slip-img">
+
+          <div class="parlay-payout" style="border:1px solid rgba(239,68,68,0.2);">
+            <div class="payout-item">
+              <span class="payout-label">Wagered</span>
+              <span class="payout-val" style="color:#ef4444;">-$17.00</span>
+            </div>
+            <div class="payout-arrow">→</div>
+            <div class="payout-item">
+              <span class="payout-label">Result</span>
+              <span class="payout-val payout-big" style="color:#ef4444;">LOST</span>
+            </div>
+          </div>
         </div>
-        <div class="leg">
-          <span class="leg-icon">❌</span>
-          <span class="leg-text" style="color:#ef4444;">PIT @ NYM Over 7.5 Runs <span style="font-size:11px;">(Total: 2)</span></span>
-          <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
-        </div>
+
       </div>
+    </details>
 
-      <img src="parlay1-2026-03-28.jpg" alt="5 Leg Parlay Slip" class="parlay-slip-img">
-
-      <div class="parlay-payout" style="border:1px solid rgba(239,68,68,0.2);">
-        <div class="payout-item">
-          <span class="payout-label">Wagered</span>
-          <span class="payout-val" style="color:#ef4444;">-$20.00</span>
-        </div>
-        <div class="payout-arrow">→</div>
-        <div class="payout-item">
-          <span class="payout-label">Result</span>
-          <span class="payout-val payout-big" style="color:#ef4444;">LOST</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Parlay 2 -->
-    <div class="parlay-card parlay-2" style="opacity:0.7;">
-      <div class="parlay-badge parlay-badge-2" style="background:linear-gradient(135deg,#dc2626,#ef4444);">4 Leg Parlay — LOST ❌</div>
-      <div class="parlay-odds parlay-odds-2" style="color:#ef4444;">+668</div>
-      
-      <div class="legs-list">
-        <div class="leg">
-          <span class="leg-icon">✅</span>
-          <span class="leg-text">TB @ STL Over 7.5 Runs <span style="color:#10b981;font-size:11px;">(Total: 11)</span></span>
-          <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
-        </div>
-        <div class="leg">
-          <span class="leg-icon">👤</span>
-          <span class="leg-text">Pete Crow-Armstrong 2+ H+R+RBI</span>
-          <span class="leg-odds">TBD</span>
-        </div>
-        <div class="leg">
-          <span class="leg-icon">✅</span>
-          <span class="leg-text">Toronto Blue Jays ML <span style="color:#10b981;font-size:11px;">(TOR 8, OAK 7)</span></span>
-          <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
-        </div>
-        <div class="leg">
-          <span class="leg-icon">❌</span>
-          <span class="leg-text" style="color:#ef4444;">Baltimore Orioles ML <span style="font-size:11px;">(BAL 1, MIN 4)</span></span>
-          <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
-        </div>
-      </div>
-
-      <img src="parlay2-2026-03-28.jpg" alt="4 Leg Parlay Slip" class="parlay-slip-img">
-
-      <div class="parlay-payout" style="border:1px solid rgba(239,68,68,0.2);">
-        <div class="payout-item">
-          <span class="payout-label">Wagered</span>
-          <span class="payout-val" style="color:#ef4444;">-$17.00</span>
-        </div>
-        <div class="payout-arrow">→</div>
-        <div class="payout-item">
-          <span class="payout-label">Result</span>
-          <span class="payout-val payout-big" style="color:#ef4444;">LOST</span>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- CTA -->
