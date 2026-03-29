@@ -365,6 +365,47 @@ body {
   text-transform: uppercase;
 }
 
+/* ─── PROP DAY DROPDOWN ─── */
+.prop-day {
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #0a1210, #0d1a16);
+  overflow: hidden;
+}
+.prop-day summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.2s;
+}
+.prop-day summary:hover {
+  background: rgba(16,185,129,0.06);
+}
+.prop-day summary::-webkit-details-marker { display: none; }
+.prop-day[open] summary {
+  border-bottom: 1px solid rgba(16,185,129,0.1);
+}
+.prop-day[open] .day-arrow {
+  transform: rotate(90deg);
+}
+.prop-day-content {
+  padding: 16px 20px 20px;
+}
+.prop-section {
+  margin-bottom: 24px;
+}
+.prop-section .section-header h2 {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ─── FOOTER ─── */
 .footer {
   text-align: center;
@@ -673,71 +714,140 @@ body {
     </div>
   </div>
 
-  <!-- CURRENT PROP CARD -->
-  <div class="prop-card" style="border-color:rgba(239,68,68,0.2);opacity:0.8;">
-    <div class="badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">🔴 Day 2 — LOST</div>
-    <div class="player-name">Sean Burke</div>
-    <div class="prop-type">Chicago White Sox — Pitcher</div>
-
-    <div class="line-box">
-      <span class="over" style="color:#ef4444;">12 of 15</span>
-      <span class="line-detail">Outs Recorded — Pulled in 4th</span>
+  <!-- PROP OF THE DAY PICKS -->
+  <div class="prop-section">
+    <div class="section-header">
+      <h2>🎯 PROP OF THE DAY — PICKS</h2>
+      <p class="section-note">*Bankroll build — 1 play a day*</p>
     </div>
 
-    <div class="matchup-row">
-      <span>White Sox</span>
-      <span class="vs">@</span>
-      <span>Brewers</span>
-      <span style="margin-left:auto;background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:6px;">📍 7:11 PM ET</span>
-    </div>
-
-    <!-- Bet Slip -->
-    <div class="slip" style="border-color:rgba(239,68,68,0.2);background:rgba(239,68,68,0.04);">
-      <div class="slip-label" style="color:#ef4444;">❌ Result: LOST</div>
-      <img src="prop-of-day-2026-03-28.jpg" alt="Sean Burke O 14.5 Outs — Bet Slip">
-      <div class="slip-grid">
-        <div class="slip-item">
-          <div class="lbl">Wagered</div>
-          <div class="val" style="color:#ef4444;">-$19.43</div>
+    <!-- DAY 1 — Schlittler WON -->
+    <details class="prop-day">
+      <summary>
+        <span class="day-arrow">▶</span>
+        <div class="day-summary-info">
+          <div class="day-summary-title">Day 1 — Thursday, Mar 27</div>
+          <div class="day-summary-sub">Cam Schlittler • Over 4.5 K's</div>
         </div>
-        <div class="slip-item">
-          <div class="lbl">Result</div>
-          <div class="val" style="color:#ef4444;">12 Outs</div>
+        <div class="day-summary-result">
+          <div class="day-summary-record record-win">WON ✅</div>
+          <div class="day-summary-amount">$10 → $19.43</div>
+        </div>
+      </summary>
+      <div class="prop-day-content">
+        <div class="prop-card" style="border-color:rgba(16,185,129,0.3);">
+          <div class="badge">✅ Day 1 — WON</div>
+          <div class="player-name">Cam Schlittler</div>
+          <div class="prop-type">Tampa Bay Rays — Pitcher</div>
+
+          <div class="line-box">
+            <span class="over">O 4.5</span>
+            <span class="line-detail">Strikeouts</span>
+            <span class="odds-badge">CASHED</span>
+          </div>
+
+          <div class="slip" style="border-color:rgba(16,185,129,0.2);">
+            <div class="slip-label" style="color:#10b981;">✅ Result: WON</div>
+            <div class="slip-grid">
+              <div class="slip-item">
+                <div class="lbl">Wagered</div>
+                <div class="val">$10.00</div>
+              </div>
+              <div class="slip-item">
+                <div class="lbl">Payout</div>
+                <div class="val">$19.43</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="analysis">
+            <h3>🧠 Result</h3>
+            <p>Schlittler came through with the K's. Bankroll doubled on Day 1. <strong style="color:#10b981;">+$9.43 profit.</strong></p>
+          </div>
         </div>
       </div>
-    </div>
+    </details>
 
-    <!-- Stats -->
-    <div class="stats-grid">
-      <div class="stat-box">
-        <div class="num">6.1</div>
-        <div class="lbl">IP/Start</div>
-      </div>
-      <div class="stat-box">
-        <div class="num">18.3</div>
-        <div class="lbl">Outs Avg</div>
-      </div>
-      <div class="stat-box">
-        <div class="num">4.22</div>
-        <div class="lbl">ERA</div>
-      </div>
-      <div class="stat-box">
-        <div class="num">+3.8</div>
-        <div class="lbl">Edge</div>
-      </div>
-    </div>
+    <!-- DAY 2 — Burke LOST -->
+    <details class="prop-day" open>
+      <summary>
+        <span class="day-arrow">▶</span>
+        <div class="day-summary-info">
+          <div class="day-summary-title">Day 2 — Saturday, Mar 28</div>
+          <div class="day-summary-sub">Sean Burke • Over 14.5 Outs</div>
+        </div>
+        <div class="day-summary-result">
+          <div class="day-summary-record record-loss">LOST ❌</div>
+          <div class="day-summary-amount">-$19.43</div>
+        </div>
+      </summary>
+      <div class="prop-day-content">
+        <div class="prop-card" style="border-color:rgba(239,68,68,0.2);opacity:0.8;">
+          <div class="badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">🔴 Day 2 — LOST</div>
+          <div class="player-name">Sean Burke</div>
+          <div class="prop-type">Chicago White Sox — Pitcher</div>
 
-    <!-- Analysis -->
-    <div class="analysis">
-      <h3>🧠 Why This Play</h3>
-      <p>Burke is an innings eater. He averages <strong style="color:#fff;">6.1 innings per start</strong> (18.3 outs), giving nearly <strong style="color:#10b981;">4 outs of cushion</strong> against a 14.5 line.</p>
-      <p>Milwaukee's contact-heavy lineup (23% K rate) means more balls in play — and more outs recorded. At -114 on FanDuel, the value is locked in.</p>
-      <div class="confidence">
-        <span class="confidence-label">Confidence:</span>
-        <span style="font-size:16px;">🔥🔥🔥🔥</span>
-        <span style="color:#555;font-size:11px;">(4/5)</span>
+          <div class="line-box">
+            <span class="over" style="color:#ef4444;">12 of 15</span>
+            <span class="line-detail">Outs Recorded — Pulled in 4th</span>
+          </div>
+
+          <div class="matchup-row">
+            <span>White Sox</span>
+            <span class="vs">@</span>
+            <span>Brewers</span>
+            <span style="margin-left:auto;background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:6px;">📍 7:11 PM ET</span>
+          </div>
+
+          <!-- Bet Slip -->
+          <div class="slip" style="border-color:rgba(239,68,68,0.2);background:rgba(239,68,68,0.04);">
+            <div class="slip-label" style="color:#ef4444;">❌ Result: LOST</div>
+            <img src="prop-of-day-2026-03-28.jpg" alt="Sean Burke O 14.5 Outs — Bet Slip">
+            <div class="slip-grid">
+              <div class="slip-item">
+                <div class="lbl">Wagered</div>
+                <div class="val" style="color:#ef4444;">-$19.43</div>
+              </div>
+              <div class="slip-item">
+                <div class="lbl">Result</div>
+                <div class="val" style="color:#ef4444;">12 Outs</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="num">6.1</div>
+              <div class="lbl">IP/Start</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">18.3</div>
+              <div class="lbl">Outs Avg</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">4.22</div>
+              <div class="lbl">ERA</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">+3.8</div>
+              <div class="lbl">Edge</div>
+            </div>
+          </div>
+
+          <!-- Analysis -->
+          <div class="analysis">
+            <h3>🧠 Post-Game</h3>
+            <p>Burke got pulled in the 4th inning with only <strong style="color:#ef4444;">12 outs</strong> — needed 15. His 2025 average was 18.3 outs/start, but manager pulled the plug early. Stats were right, execution wasn't.</p>
+            <div class="confidence">
+              <span class="confidence-label">Confidence was:</span>
+              <span style="font-size:16px;">🔥🔥🔥🔥</span>
+              <span style="color:#555;font-size:11px;">(4/5)</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </details>
   </div>
 
   <!-- PARLAY OF THE DAY -->
