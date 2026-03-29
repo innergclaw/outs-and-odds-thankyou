@@ -4,9 +4,12 @@ OUTS AND ODDS v2 — Fixed name matching + Pitcher Outs
 Pulls directly from MLB API for pitcher data, matches to Odds API lines.
 """
 import json, urllib.request, time
+from datetime import datetime, timedelta
 
 ODDS_KEY = 'da906835e59052b0da670c3f6a9aa22e'
-TODAY = '03/28/2026'
+TODAY = datetime.now().strftime('%m/%d/%Y')
+TODAY_ISO = datetime.now().strftime('%Y-%m-%d')
+TODAY_LABEL = datetime.now().strftime('%A, %B %d, %Y')
 
 def mlb(path):
     url = f"https://statsapi.mlb.com/api/v1{path}"
@@ -258,7 +261,7 @@ outs_picks.sort(key=lambda x: x['edge'], reverse=True)
 print("```")
 print("╔════════════════════════════════════════════════════════════════╗")
 print("║       ⚾  OUTS AND ODDS — DAILY PICKS (K's + OUTS)  ⚾      ║")
-print("║              Friday, March 27, 2026                          ║")
+print(f"║              {TODAY_LABEL:<44s}║")
 print("╚════════════════════════════════════════════════════════════════╝")
 print("```")
 print()
@@ -308,7 +311,7 @@ print("*Not financial advice. Bet responsibly.*")
 
 # Save
 output = {
-    'date': '2026-03-28',
+    'date': TODAY_ISO,
     'k_picks': k_picks,
     'outs_picks': outs_picks,
 }
