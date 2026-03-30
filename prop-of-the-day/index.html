@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prop of the Day — Outs and Odds</title>
+<title>Props & Parlays — Outs and Odds</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -72,12 +72,11 @@ body {
   font-weight: 700;
 }
 
-/* Progress bar */
 .progress-bar {
   background: rgba(255,255,255,0.05);
   border-radius: 8px;
   height: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 6px;
   overflow: hidden;
   position: relative;
 }
@@ -90,7 +89,6 @@ body {
 .progress-labels {
   display: flex;
   justify-content: space-between;
-  margin-top: 6px;
   margin-bottom: 20px;
 }
 .progress-labels span {
@@ -98,48 +96,25 @@ body {
   color: #555;
 }
 
-/* Day entries */
 .day-entry {
   display: flex;
   align-items: flex-start;
   gap: 14px;
   padding: 14px 0;
   border-top: 1px solid rgba(255,255,255,0.05);
-  position: relative;
 }
-.day-entry:first-of-type {
-  border-top: none;
-}
+.day-entry:first-of-type { border-top: none; }
 
-/* Timeline dot */
 .timeline-dot {
-  width: 36px;
-  height: 36px;
+  width: 36px; height: 36px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 800;
-  flex-shrink: 0;
-  margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800;
+  flex-shrink: 0; margin-top: 2px;
 }
-.dot-won {
-  background: rgba(16,185,129,0.15);
-  border: 2px solid #10b981;
-  color: #10b981;
-}
-.dot-active {
-  background: rgba(234,179,8,0.15);
-  border: 2px solid #eab308;
-  color: #eab308;
-  animation: pulse 2s infinite;
-}
-.dot-upcoming {
-  background: rgba(255,255,255,0.05);
-  border: 2px solid #333;
-  color: #555;
-}
+.dot-won { background: rgba(16,185,129,0.15); border: 2px solid #10b981; color: #10b981; }
+.dot-lost { background: rgba(239,68,68,0.15); border: 2px solid #ef4444; color: #ef4444; }
+.dot-pending { background: rgba(234,179,8,0.15); border: 2px solid #eab308; color: #eab308; animation: pulse 2s infinite; }
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(234,179,8,0.3); }
   50% { box-shadow: 0 0 0 8px rgba(234,179,8,0); }
@@ -147,296 +122,20 @@ body {
 
 .day-info { flex: 1; }
 .day-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 4px;
 }
-.day-num {
-  font-size: 12px;
-  font-weight: 700;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.day-status {
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-weight: 600;
-}
-.status-won {
-  background: rgba(16,185,129,0.15);
-  color: #10b981;
-}
-.status-live {
-  background: rgba(234,179,8,0.15);
-  color: #eab308;
-}
-.day-pick {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 2px;
-}
-.day-matchup {
-  font-size: 12px;
-  color: #666;
-}
-.day-money {
-  text-align: right;
-  flex-shrink: 0;
-}
-.day-wager {
-  font-size: 12px;
-  color: #666;
-}
-.day-result {
-  font-size: 16px;
-  font-weight: 800;
-}
-.money-won { color: #10b981; }
-.money-pending { color: #eab308; }
+.day-num { font-size: 12px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+.day-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+.status-won { background: rgba(16,185,129,0.15); color: #10b981; }
+.status-lost { background: rgba(239,68,68,0.15); color: #ef4444; }
+.status-pending { background: rgba(234,179,8,0.15); color: #eab308; }
+.day-pick { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.day-matchup { font-size: 12px; color: #666; }
+.day-money { text-align: right; flex-shrink: 0; }
+.day-wager { font-size: 12px; color: #666; }
+.day-result { font-size: 16px; font-weight: 800; }
 
-/* ─── CURRENT PROP CARD ─── */
-.prop-card {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border-radius: 16px;
-  padding: 28px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(16,185,129,0.2);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
-.badge {
-  display: inline-block;
-  background: linear-gradient(135deg, #059669, #10b981);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
-}
-.player-name {
-  font-size: 26px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-.prop-type {
-  color: #888;
-  font-size: 13px;
-  margin-bottom: 16px;
-}
-.line-box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.over {
-  font-size: 32px;
-  font-weight: 900;
-  color: #10b981;
-}
-.line-detail {
-  color: #aaa;
-  font-size: 13px;
-}
-.odds-badge {
-  background: #10b981;
-  color: #000;
-  padding: 5px 12px;
-  border-radius: 6px;
-  font-weight: 800;
-  font-size: 13px;
-}
-.matchup-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #888;
-  font-size: 13px;
-  margin-bottom: 20px;
-}
-.matchup-row .vs { color: #444; }
-
-/* Bet slip */
-.slip {
-  background: rgba(16,185,129,0.06);
-  border: 1px solid rgba(16,185,129,0.15);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.slip-label {
-  font-size: 12px;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  font-weight: 700;
-}
-.slip img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 14px;
-}
-.slip-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.slip-item {
-  background: rgba(0,0,0,0.3);
-  padding: 12px 14px;
-  border-radius: 8px;
-}
-.slip-item .lbl {
-  font-size: 10px;
-  color: #555;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-.slip-item .val {
-  font-size: 18px;
-  font-weight: 700;
-  color: #10b981;
-}
-
-/* Stats */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin: 16px 0;
-}
-.stat-box {
-  background: rgba(0,0,0,0.25);
-  padding: 14px 8px;
-  border-radius: 8px;
-  text-align: center;
-}
-.stat-box .num {
-  font-size: 20px;
-  font-weight: 800;
-  color: #10b981;
-}
-.stat-box .lbl {
-  font-size: 10px;
-  color: #555;
-  text-transform: uppercase;
-  margin-top: 4px;
-}
-
-/* Analysis */
-.analysis {
-  background: rgba(255,255,255,0.03);
-  border-radius: 12px;
-  padding: 20px;
-}
-.analysis h3 {
-  font-size: 13px;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-}
-.analysis p {
-  color: #aaa;
-  font-size: 13px;
-  line-height: 1.7;
-  margin-bottom: 10px;
-}
-.analysis p:last-child { margin-bottom: 0; }
-.confidence {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-.confidence-label {
-  font-size: 11px;
-  color: #666;
-  text-transform: uppercase;
-}
-
-/* ─── PROP DAY DROPDOWN ─── */
-.prop-day {
-  border: 1px solid rgba(16,185,129,0.15);
-  border-radius: 14px;
-  margin-bottom: 12px;
-  background: linear-gradient(135deg, #0a1210, #0d1a16);
-  overflow: hidden;
-}
-.prop-day summary {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 20px;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-  transition: background 0.2s;
-}
-.prop-day summary:hover {
-  background: rgba(16,185,129,0.06);
-}
-.prop-day summary::-webkit-details-marker { display: none; }
-.prop-day[open] summary {
-  border-bottom: 1px solid rgba(16,185,129,0.1);
-}
-.prop-day[open] .day-arrow {
-  transform: rotate(90deg);
-}
-.prop-day-content {
-  padding: 16px 20px 20px;
-}
-.prop-section {
-  margin-bottom: 24px;
-}
-.prop-section .section-header h2 {
-  background: linear-gradient(135deg, #10b981, #34d399);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ─── FOOTER ─── */
-.footer {
-  text-align: center;
-  padding: 24px 16px;
-  color: #444;
-  font-size: 11px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  margin-top: 12px;
-}
-.footer a {
-  color: #10b981;
-  text-decoration: none;
-}
-.discord-btn {
-  display: inline-block;
-  padding: 14px 32px;
-  background: #5865F2;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  transition: all 0.2s ease;
-}
-.discord-btn:hover { background: #4752c4; transform: translateY(-1px); }
-
-/* ─── PARLAY SECTION ─── */
-.parlay-section {
-  margin-bottom: 24px;
-}
+/* ─── UNIFIED DAY ACCORDION ─── */
 .section-header {
   text-align: center;
   margin-bottom: 20px;
@@ -444,7 +143,7 @@ body {
 .section-header h2 {
   font-size: 22px;
   font-weight: 800;
-  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  background: linear-gradient(135deg, #10b981, #34d399);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -456,78 +155,117 @@ body {
   font-style: italic;
 }
 
-/* Dropdown day accordion */
-.parlay-day {
-  border: 1px solid rgba(139,92,246,0.15);
+.day-block {
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
   margin-bottom: 12px;
-  background: linear-gradient(135deg, #0d0b1a, #131128);
+  background: linear-gradient(135deg, #0d1117, #111820);
   overflow: hidden;
 }
-.parlay-day summary {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 20px;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
+.day-block.day-won-block { border-color: rgba(16,185,129,0.15); }
+.day-block.day-lost-block { border-color: rgba(239,68,68,0.12); }
+.day-block.day-pending-block { border-color: rgba(234,179,8,0.2); }
+
+.day-block summary {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 20px; cursor: pointer; list-style: none; user-select: none;
   transition: background 0.2s;
 }
-.parlay-day summary:hover {
-  background: rgba(139,92,246,0.06);
-}
-.parlay-day summary::-webkit-details-marker { display: none; }
-.parlay-day[open] summary {
-  border-bottom: 1px solid rgba(139,92,246,0.1);
-}
+.day-block summary:hover { background: rgba(255,255,255,0.03); }
+.day-block summary::-webkit-details-marker { display: none; }
+.day-block[open] summary { border-bottom: 1px solid rgba(255,255,255,0.06); }
+.day-block[open] .day-arrow { transform: rotate(90deg); }
 .day-arrow {
-  font-size: 12px;
-  color: #555;
-  transition: transform 0.3s;
-  flex-shrink: 0;
+  font-size: 12px; color: #555; transition: transform 0.3s; flex-shrink: 0;
 }
-.parlay-day[open] .day-arrow {
-  transform: rotate(90deg);
-}
-.day-summary-info {
-  flex: 1;
-}
-.day-summary-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #ddd;
-}
-.day-summary-sub {
-  font-size: 11px;
-  color: #666;
-  margin-top: 2px;
-}
-.day-summary-result {
-  text-align: right;
-  flex-shrink: 0;
-}
-.day-summary-record {
-  font-size: 13px;
-  font-weight: 700;
-}
+.day-summary-info { flex: 1; }
+.day-summary-title { font-size: 14px; font-weight: 700; color: #ddd; }
+.day-summary-sub { font-size: 11px; color: #666; margin-top: 2px; }
+.day-summary-result { text-align: right; flex-shrink: 0; }
+.day-summary-record { font-size: 13px; font-weight: 700; }
 .record-loss { color: #ef4444; }
 .record-win { color: #10b981; }
 .record-pending { color: #eab308; }
-.day-summary-amount {
-  font-size: 11px;
-  color: #666;
-  margin-top: 2px;
-}
-.parlay-day-content {
-  padding: 16px 20px 20px;
-}
+.day-summary-amount { font-size: 11px; color: #666; margin-top: 2px; }
+.day-content { padding: 16px 20px 20px; }
 
+/* ─── PROP CARD ─── */
+.prop-card {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px; padding: 24px; margin-bottom: 16px;
+  border: 1px solid rgba(16,185,129,0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.prop-card:last-child { margin-bottom: 0; }
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #fff; padding: 5px 14px; border-radius: 20px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 14px;
+}
+.player-name { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+.prop-type { color: #888; font-size: 13px; margin-bottom: 14px; }
+.line-box {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+}
+.over { font-size: 28px; font-weight: 900; color: #10b981; }
+.line-detail { color: #aaa; font-size: 13px; }
+.odds-badge {
+  background: #10b981; color: #000; padding: 4px 10px;
+  border-radius: 6px; font-weight: 800; font-size: 13px;
+}
+.matchup-row {
+  display: flex; align-items: center; gap: 10px;
+  color: #888; font-size: 13px; margin-bottom: 16px;
+}
+.matchup-row .vs { color: #444; }
+
+.slip {
+  background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 12px; padding: 16px; margin-bottom: 16px;
+}
+.slip img { width: 100%; border-radius: 8px; margin-bottom: 12px; }
+.slip-label {
+  font-size: 12px; color: #888; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 10px; font-weight: 700;
+}
+.slip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.slip-item { background: rgba(0,0,0,0.3); padding: 12px 14px; border-radius: 8px; }
+.slip-item .lbl { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.slip-item .val { font-size: 18px; font-weight: 700; color: #10b981; }
+
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; margin: 14px 0;
+}
+.stat-box {
+  background: rgba(0,0,0,0.25); padding: 12px 6px;
+  border-radius: 8px; text-align: center;
+}
+.stat-box .num { font-size: 18px; font-weight: 800; color: #10b981; }
+.stat-box .lbl { font-size: 10px; color: #555; text-transform: uppercase; margin-top: 4px; }
+
+.analysis {
+  background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px;
+}
+.analysis h3 {
+  font-size: 13px; color: #888; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 10px;
+}
+.analysis p { color: #aaa; font-size: 13px; line-height: 1.7; margin-bottom: 8px; }
+.analysis p:last-child { margin-bottom: 0; }
+.confidence {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.confidence-label { font-size: 11px; color: #666; text-transform: uppercase; }
+
+/* ─── PARLAY CARD ─── */
 .parlay-card {
   background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 16px;
+  border-radius: 16px; padding: 24px; margin-bottom: 16px;
   border: 1px solid rgba(139,92,246,0.25);
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
@@ -535,107 +273,61 @@ body {
 .parlay-badge {
   display: inline-block;
   background: linear-gradient(135deg, #7c3aed, #8b5cf6);
-  color: #fff;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
+  color: #fff; padding: 5px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 1px;
 }
-.parlay-badge-2 {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-}
-.parlay-odds {
-  font-size: 36px;
-  font-weight: 900;
-  color: #a855f7;
-  margin: 8px 0 16px;
-}
-.parlay-odds-2 {
-  color: #3b82f6;
-}
+.parlay-odds { font-size: 32px; font-weight: 900; color: #a855f7; margin: 8px 0 14px; }
+.parlay-odds-2 { color: #3b82f6; }
 
 .legs-list {
-  background: rgba(0,0,0,0.25);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
+  background: rgba(0,0,0,0.25); border-radius: 12px;
+  padding: 14px; margin-bottom: 14px;
 }
 .leg {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-.leg:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-.leg:first-child {
-  padding-top: 0;
-}
-.leg-icon {
-  font-size: 16px;
-  width: 24px;
-  text-align: center;
-}
-.leg-text {
-  flex: 1;
-  font-size: 13px;
-  color: #ddd;
-}
+.leg:last-child { border-bottom: none; padding-bottom: 0; }
+.leg:first-child { padding-top: 0; }
+.leg-icon { font-size: 16px; width: 24px; text-align: center; }
+.leg-text { flex: 1; font-size: 13px; color: #ddd; }
 .leg-odds {
-  font-size: 12px;
-  font-weight: 700;
-  color: #a855f7;
-  background: rgba(139,92,246,0.15);
-  padding: 4px 10px;
-  border-radius: 6px;
+  font-size: 12px; font-weight: 700; color: #a855f7;
+  background: rgba(139,92,246,0.15); padding: 4px 10px; border-radius: 6px;
 }
 
 .parlay-slip-img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 16px;
+  width: 100%; border-radius: 10px; margin-bottom: 14px;
   border: 1px solid rgba(255,255,255,0.1);
 }
 
-.parlay-payout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  background: rgba(0,0,0,0.3);
-  padding: 16px;
-  border-radius: 12px;
+.payout-box {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  background: rgba(0,0,0,0.3); padding: 16px; border-radius: 12px;
 }
-.payout-item {
-  text-align: center;
-}
+.payout-item { text-align: center; }
 .payout-label {
-  display: block;
-  font-size: 10px;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
+  display: block; font-size: 10px; color: #666;
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
 }
-.payout-val {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
+.payout-val { font-size: 18px; font-weight: 700; color: #fff; }
+.payout-big { font-size: 22px; color: #a855f7; }
+.payout-arrow { font-size: 20px; color: #555; font-weight: 700; }
+
+/* ─── FOOTER ─── */
+.footer {
+  text-align: center; padding: 24px 16px; color: #444;
+  font-size: 11px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 12px;
 }
-.payout-big {
-  font-size: 24px;
-  color: #a855f7;
+.footer a { color: #10b981; text-decoration: none; }
+.discord-btn {
+  display: inline-block; padding: 14px 32px; background: #5865F2;
+  color: #fff; text-decoration: none; border-radius: 10px;
+  font-size: 14px; font-weight: 700; margin-bottom: 20px;
+  transition: all 0.2s ease;
 }
-.payout-arrow {
-  font-size: 20px;
-  color: #555;
-  font-weight: 700;
-}
+.discord-btn:hover { background: #4752c4; transform: translateY(-1px); }
 </style>
 </head>
 <body>
@@ -644,53 +336,49 @@ body {
   <!-- HEADER -->
   <div class="header">
     <div class="logo">⚾ Outs & Odds</div>
-    <h1>PROP OF THE DAY</h1>
-    <div class="subtitle">Bankroll building — 1 play a day 👨‍🔬</div>
+    <h1>PROPS & PARLAYS</h1>
+    <div class="subtitle">Daily picks — bankroll building 👨‍🔬</div>
   </div>
 
   <!-- BANKROLL TRACKER -->
   <div class="tracker">
     <div class="tracker-header">
       <span class="tracker-title">📈 Bankroll Tracker</span>
-      <span class="bankroll-total">Started: $10</span>
+      <span class="bankroll-total">Current: $31.66</span>
     </div>
-
-    <!-- Progress bar: $10 start, $36.47 potential, $100 goal -->
     <div class="progress-bar">
-      <div class="progress-fill" style="width: 19.43%;"></div>
+      <div class="progress-fill" style="width: 31.66%;"></div>
     </div>
     <div class="progress-labels">
-      <span>$10</span>
+      <span>$10 start</span>
       <span>Goal: $100</span>
     </div>
 
-    <!-- DAY 1 — WON ✅ -->
     <div class="day-entry">
       <div class="timeline-dot dot-won">✓</div>
       <div class="day-info">
         <div class="day-label">
-          <span class="day-num">Day 1 — Mar 27</span>
+          <span class="day-num">Day 1 — Thu, Mar 27</span>
           <span class="day-status status-won">WON ✅</span>
         </div>
-        <div class="day-pick">Cam Schlittler Over 4.5 K's</div>
-        <div class="day-matchup">Tampa Bay Rays Pitcher</div>
+        <div class="day-pick">Schlittler O 4.5 K's</div>
+        <div class="day-matchup">Rays Pitcher — Cashed</div>
       </div>
       <div class="day-money">
         <div class="day-wager">$10.00</div>
-        <div class="day-result money-won">→ $19.43</div>
+        <div class="day-result" style="color:#10b981;">→ $19.43</div>
       </div>
     </div>
 
-    <!-- DAY 2 — LOST ❌ -->
     <div class="day-entry">
-      <div class="timeline-dot" style="background:rgba(239,68,68,0.15);border:2px solid #ef4444;color:#ef4444;">✗</div>
+      <div class="timeline-dot dot-lost">✗</div>
       <div class="day-info">
         <div class="day-label">
-          <span class="day-num">Day 2 — Mar 28</span>
-          <span class="day-status" style="background:rgba(239,68,68,0.15);color:#ef4444;">LOST ❌</span>
+          <span class="day-num">Day 2 — Sat, Mar 28</span>
+          <span class="day-status status-lost">LOST ❌</span>
         </div>
-        <div class="day-pick">Sean Burke Over 14.5 Outs</div>
-        <div class="day-matchup">Pulled in 4th — 12 outs (needed 15)</div>
+        <div class="day-pick">Burke O 14.5 Outs</div>
+        <div class="day-matchup">Pulled 4th inning — 12 outs</div>
       </div>
       <div class="day-money">
         <div class="day-wager">$19.43</div>
@@ -698,540 +386,324 @@ body {
       </div>
     </div>
 
-    <!-- DAY 3 — Mar 29 (1st attempt) LOST -->
     <div class="day-entry">
-      <div class="timeline-dot" style="background:rgba(239,68,68,0.15);border:2px solid #ef4444;color:#ef4444;">✗</div>
+      <div class="timeline-dot dot-pending">⏳</div>
       <div class="day-info">
         <div class="day-label">
-          <span class="day-num">Day 3 — Mar 29 (1st pick)</span>
-          <span class="day-status" style="background:rgba(239,68,68,0.15);color:#ef4444;">LOST ❌</span>
-        </div>
-        <div class="day-pick">Grant Holmes O 4.5 K's</div>
-        <div class="day-matchup">Royals @ Braves — Did not cover</div>
-      </div>
-      <div class="day-money">
-        <div class="day-wager">$10.00</div>
-        <div class="day-result" style="color:#ef4444;">→ $0</div>
-      </div>
-    </div>
-
-    <!-- DAY 3 — Mar 29 (2nd attempt) WON -->
-    <div class="day-entry">
-      <div class="timeline-dot" style="background:rgba(16,185,129,0.15);border:2px solid #10b981;color:#10b981;">✓</div>
-      <div class="day-info">
-        <div class="day-label">
-          <span class="day-num">Day 3 — Mar 29 (New Picks)</span>
-          <span class="day-status" style="background:rgba(16,185,129,0.15);color:#10b981;">WON ✅</span>
+          <span class="day-num">Day 3 — Sun, Mar 29</span>
+          <span class="day-status status-won">WON ✅</span>
         </div>
         <div class="day-pick" style="color:#10b981;">Hancock O 3.5 K's (9!) & Cecconi O 4.5 K's (5)</div>
-        <div class="day-matchup">Mariners @ Guardians — BOTH CASHED</div>
+        <div class="day-matchup">Both cashed — fresh start</div>
       </div>
       <div class="day-money">
         <div class="day-wager">$10.00</div>
-        <div class="day-result" style="color:#10b981;">→ $31.66 (+$21.66)</div>
+        <div class="day-result" style="color:#10b981;">→ $31.66</div>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="timeline-dot dot-pending">⏳</div>
+      <div class="day-info">
+        <div class="day-label">
+          <span class="day-num">Day 4 — Mon, Mar 30</span>
+          <span class="day-status status-pending">LIVE ⏳</span>
+        </div>
+        <div class="day-pick">Ashcraft O 5.5 K's + Harrison O 5.5 K's</div>
+        <div class="day-matchup">2-leg K parlay (+177)</div>
+      </div>
+      <div class="day-money">
+        <div class="day-wager">$31.00</div>
+        <div class="day-result" style="color:#eab308;">→ $86.15</div>
       </div>
     </div>
   </div>
 
-  <!-- PROP OF THE DAY PICKS -->
-  <div class="prop-section">
-    <div class="section-header">
-      <h2>🎯 PROP OF THE DAY — PICKS</h2>
-      <p class="section-note">*Bankroll build — 1 play a day*</p>
-    </div>
-
-    <!-- DAY 1 — Schlittler WON -->
-    <details class="prop-day">
-      <summary>
-        <span class="day-arrow">▶</span>
-        <div class="day-summary-info">
-          <div class="day-summary-title">Day 1 — Thursday, Mar 27</div>
-          <div class="day-summary-sub">Cam Schlittler • Over 4.5 K's</div>
-        </div>
-        <div class="day-summary-result">
-          <div class="day-summary-record record-win">WON ✅</div>
-          <div class="day-summary-amount">$10 → $19.43</div>
-        </div>
-      </summary>
-      <div class="prop-day-content">
-        <div class="prop-card" style="border-color:rgba(16,185,129,0.3);">
-          <div class="badge">✅ Day 1 — WON</div>
-          <div class="player-name">Cam Schlittler</div>
-          <div class="prop-type">Tampa Bay Rays — Pitcher</div>
-
-          <div class="line-box">
-            <span class="over">O 4.5</span>
-            <span class="line-detail">Strikeouts</span>
-            <span class="odds-badge">CASHED</span>
-          </div>
-
-          <div class="slip" style="border-color:rgba(16,185,129,0.2);">
-            <div class="slip-label" style="color:#10b981;">✅ Result: WON</div>
-            <div class="slip-grid">
-              <div class="slip-item">
-                <div class="lbl">Wagered</div>
-                <div class="val">$10.00</div>
-              </div>
-              <div class="slip-item">
-                <div class="lbl">Payout</div>
-                <div class="val">$19.43</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="analysis">
-            <h3>🧠 Result</h3>
-            <p>Schlittler came through with the K's. Bankroll doubled on Day 1. <strong style="color:#10b981;">+$9.43 profit.</strong></p>
-          </div>
-        </div>
-      </div>
-    </details>
-
-    <!-- DAY 2 — Burke LOST -->
-    <details class="prop-day" open>
-      <summary>
-        <span class="day-arrow">▶</span>
-        <div class="day-summary-info">
-          <div class="day-summary-title">Day 2 — Saturday, Mar 28</div>
-          <div class="day-summary-sub">Sean Burke • Over 14.5 Outs</div>
-        </div>
-        <div class="day-summary-result">
-          <div class="day-summary-record record-loss">LOST ❌</div>
-          <div class="day-summary-amount">-$19.43</div>
-        </div>
-      </summary>
-      <div class="prop-day-content">
-        <div class="prop-card" style="border-color:rgba(239,68,68,0.2);opacity:0.8;">
-          <div class="badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">🔴 Day 2 — LOST</div>
-          <div class="player-name">Sean Burke</div>
-          <div class="prop-type">Chicago White Sox — Pitcher</div>
-
-          <div class="line-box">
-            <span class="over" style="color:#ef4444;">12 of 15</span>
-            <span class="line-detail">Outs Recorded — Pulled in 4th</span>
-          </div>
-
-          <div class="matchup-row">
-            <span>White Sox</span>
-            <span class="vs">@</span>
-            <span>Brewers</span>
-            <span style="margin-left:auto;background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:6px;">📍 7:11 PM ET</span>
-          </div>
-
-          <!-- Bet Slip -->
-          <div class="slip" style="border-color:rgba(239,68,68,0.2);background:rgba(239,68,68,0.04);">
-            <div class="slip-label" style="color:#ef4444;">❌ Result: LOST</div>
-            <img src="prop-of-day-2026-03-28.jpg" alt="Sean Burke O 14.5 Outs — Bet Slip">
-            <div class="slip-grid">
-              <div class="slip-item">
-                <div class="lbl">Wagered</div>
-                <div class="val" style="color:#ef4444;">-$19.43</div>
-              </div>
-              <div class="slip-item">
-                <div class="lbl">Result</div>
-                <div class="val" style="color:#ef4444;">12 Outs</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Stats -->
-          <div class="stats-grid">
-            <div class="stat-box">
-              <div class="num">6.1</div>
-              <div class="lbl">IP/Start</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">18.3</div>
-              <div class="lbl">Outs Avg</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">4.22</div>
-              <div class="lbl">ERA</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">+3.8</div>
-              <div class="lbl">Edge</div>
-            </div>
-          </div>
-
-          <!-- Analysis -->
-          <div class="analysis">
-            <h3>🧠 Post-Game</h3>
-            <p>Burke got pulled in the 4th inning with only <strong style="color:#ef4444;">12 outs</strong> — needed 15. His 2025 average was 18.3 outs/start, but manager pulled the plug early. Stats were right, execution wasn't.</p>
-            <div class="confidence">
-              <span class="confidence-label">Confidence was:</span>
-              <span style="font-size:16px;">🔥🔥🔥🔥</span>
-              <span style="color:#555;font-size:11px;">(4/5)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </details>
-    <!-- DAY 3 — Hancock & Cecconi WON -->
-    <details class="prop-day" open>
-      <summary>
-        <span class="day-arrow">▶</span>
-        <div class="day-summary-info">
-          <div class="day-summary-title">Day 3 — Sunday, Mar 29 (New Picks)</div>
-          <div class="day-summary-sub">Hancock O 3.5 K's (9!) • Cecconi O 4.5 K's (5)</div>
-        </div>
-        <div class="day-summary-result">
-          <div class="day-summary-record record-win">WON ✅</div>
-          <div class="day-summary-amount">$10 → $31.66</div>
-        </div>
-      </summary>
-      <div class="prop-day-content">
-
-        <!-- Hancock -->
-        <div class="prop-card" style="margin-bottom:16px;border-color:rgba(16,185,129,0.3);">
-          <div class="badge" style="background:linear-gradient(135deg,#059669,#10b981);">✅ Day 3 — WON</div>
-          <div class="player-name">Emerson Hancock</div>
-          <div class="prop-type">Seattle Mariners — Pitcher</div>
-
-          <div class="line-box">
-            <span class="over" style="color:#10b981;">9 K's</span>
-            <span class="line-detail">Strikeouts (needed 3.5)</span>
-            <span class="odds-badge" style="background:rgba(16,185,129,0.2);color:#10b981;">CASHED 💰</span>
-          </div>
-
-          <div class="stats-grid">
-            <div class="stat-box">
-              <div class="num">6.4</div>
-              <div class="lbl">K/9</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">4.0</div>
-              <div class="lbl">K/Start</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">4.9</div>
-              <div class="lbl">ERA</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">+0.8</div>
-              <div class="lbl">Edge</div>
-            </div>
-          </div>
-
-          <div class="analysis">
-            <h3>🧠 Result</h3>
-            <p>Hancock went OFF — <strong style="color:#10b981;">9 strikeouts</strong> against the Guardians. Needed 3.5. More than doubled the line. Dominant outing.</p>
-            <div class="confidence">
-              <span class="confidence-label">Confidence was:</span>
-              <span style="font-size:16px;">🔥🔥</span>
-              <span style="color:#555;font-size:11px;">(2/5) — Way exceeded</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cecconi -->
-        <div class="prop-card" style="border-color:rgba(16,185,129,0.3);">
-          <div class="badge" style="background:linear-gradient(135deg,#059669,#10b981);">✅ Day 3 — WON</div>
-          <div class="player-name">Slade Cecconi</div>
-          <div class="prop-type">Cleveland Guardians — Pitcher</div>
-
-          <div class="line-box">
-            <span class="over" style="color:#10b981;">5 K's</span>
-            <span class="line-detail">Strikeouts (needed 4.5)</span>
-            <span class="odds-badge" style="background:rgba(16,185,129,0.2);color:#10b981;">CASHED 💰</span>
-          </div>
-
-          <div class="stats-grid">
-            <div class="stat-box">
-              <div class="num">7.43</div>
-              <div class="lbl">K/9</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">4.7</div>
-              <div class="lbl">K/Start</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">4.3</div>
-              <div class="lbl">ERA</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">+0.5</div>
-              <div class="lbl">Edge</div>
-            </div>
-          </div>
-
-          <div class="analysis">
-            <h3>🧠 Result</h3>
-            <p>Cecconi got <strong style="color:#10b981;">5 strikeouts</strong> — just over the 4.5 line. Close but it counts. Clean cash.</p>
-            <div class="confidence">
-              <span class="confidence-label">Confidence was:</span>
-              <span style="font-size:16px;">🔥🔥</span>
-              <span style="color:#555;font-size:11px;">(2/5) — Just enough</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </details>
-
+  <!-- ═══════════════════════════════════════ -->
+  <!-- ALL DAYS — PROPS & PARLAYS            -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="section-header">
+    <h2>🎯 PROPS & PARLAYS</h2>
+    <p class="section-note">All picks by day — props, parlays & bonus plays</p>
   </div>
 
-  <!-- PARLAY OF THE DAY -->
-  <div class="parlay-section">
-    <div class="section-header">
-      <h2>🎰 PARLAY OF THE DAY</h2>
-      <p class="section-note">*Separate from bankroll build — bonus plays</p>
+  <!-- ────── DAY 4 — MON MAR 30 ────── -->
+  <details class="day-block day-pending-block" open>
+    <summary>
+      <span class="day-arrow">▶</span>
+      <div class="day-summary-info">
+        <div class="day-summary-title">Day 4 — Monday, Mar 30</div>
+        <div class="day-summary-sub">2-Leg K Parlay • Ashcraft O 5.5 + Harrison O 5.5</div>
+      </div>
+      <div class="day-summary-result">
+        <div class="day-summary-record record-pending">PENDING ⏳</div>
+        <div class="day-summary-amount">$31 → $86.15</div>
+      </div>
+    </summary>
+    <div class="day-content">
+
+      <div class="prop-card" style="margin-bottom:16px;border-color:rgba(234,179,8,0.3);">
+        <div class="badge" style="background:linear-gradient(135deg,#d97706,#f59e0b);">⏳ Day 4 — PENDING</div>
+        <div class="player-name">Braxton Ashcraft</div>
+        <div class="prop-type">Pittsburgh Pirates — Pitcher</div>
+        <div class="line-box">
+          <span class="over" style="color:#f59e0b;">O 5.5</span>
+          <span class="line-detail">Strikeouts</span>
+          <span class="odds-badge" style="background:rgba(234,179,8,0.2);color:#f59e0b;">-146</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="num">PIT</div><div class="lbl">vs CIN</div></div>
+          <div class="stat-box"><div class="num">6:41</div><div class="lbl">PM ET</div></div>
+          <div class="stat-box"><div class="num">+177</div><div class="lbl">Parlay</div></div>
+          <div class="stat-box"><div class="num">🔥🔥🔥</div><div class="lbl">Conf.</div></div>
+        </div>
+        <p style="color:#999;font-size:13px;">Reds lineup is swing-happy and K-prone. Ashcraft should clear 5.5 with room to spare.</p>
+      </div>
+
+      <div class="prop-card" style="border-color:rgba(234,179,8,0.3);">
+        <div class="badge" style="background:linear-gradient(135deg,#d97706,#f59e0b);">⏳ Day 4 — PENDING</div>
+        <div class="player-name">Kyle Harrison</div>
+        <div class="prop-type">Milwaukee Brewers — Pitcher</div>
+        <div class="line-box">
+          <span class="over" style="color:#f59e0b;">O 5.5</span>
+          <span class="line-detail">Strikeouts</span>
+          <span class="odds-badge" style="background:rgba(234,179,8,0.2);color:#f59e0b;">-154</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="num">MIL</div><div class="lbl">vs TB</div></div>
+          <div class="stat-box"><div class="num">7:41</div><div class="lbl">PM ET</div></div>
+          <div class="stat-box"><div class="num">+177</div><div class="lbl">Parlay</div></div>
+          <div class="stat-box"><div class="num">🔥🔥🔥</div><div class="lbl">Conf.</div></div>
+        </div>
+        <p style="color:#999;font-size:13px;">Rays lineup strikes out at a high clip. Harrison's fastball-slider combo is sharp at home.</p>
+      </div>
+
+      <img src="parlay-2026-03-30.jpg" alt="Mar 30 Parlay Slip" class="parlay-slip-img">
+
+      <div class="payout-box" style="border:1px solid rgba(234,179,8,0.2);border-radius:12px;">
+        <div class="payout-item">
+          <span class="payout-label">Wager</span>
+          <span class="payout-val">$31.00</span>
+        </div>
+        <div class="payout-arrow">→</div>
+        <div class="payout-item">
+          <span class="payout-label">Payout</span>
+          <span class="payout-val">$86.15</span>
+        </div>
+        <div class="payout-arrow">→</div>
+        <div class="payout-item">
+          <span class="payout-label">Status</span>
+          <span class="payout-val payout-big" style="color:#eab308;">PENDING ⏳</span>
+        </div>
+      </div>
+
     </div>
+  </details>
 
-    <!-- DAY 3 — Mar 29 (1st parlay) LOST -->
-    <details class="parlay-day">
-      <summary>
-        <span class="day-arrow">▶</span>
-        <div class="day-summary-info">
-          <div class="day-summary-title">Day 3 — Sunday, Mar 29 (1st parlay)</div>
-          <div class="day-summary-sub">2-leg SGP • Holmes O 4.5 K's + Braves ML</div>
-        </div>
-        <div class="day-summary-result">
-          <div class="day-summary-record record-loss">LOST ❌</div>
-          <div class="day-summary-amount">-$10.00</div>
-        </div>
-      </summary>
-      <div class="parlay-day-content">
-
-        <div class="parlay-card" style="opacity:0.7;">
-          <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">2 Leg SGP — LOST ❌</div>
-          <div class="parlay-odds parlay-odds-2" style="color:#ef4444;">+144</div>
-          
-          <div class="legs-list">
-            <div class="leg">
-              <span class="leg-icon">❌</span>
-              <span class="leg-text" style="color:#ef4444;">Grant Holmes Over 4.5 Strikeouts <span style="font-size:11px;">(Did not cover)</span></span>
-              <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">-102</span>
-            </div>
-            <div class="leg">
-              <span class="leg-icon">—</span>
-              <span class="leg-text" style="color:#666;">Atlanta Braves Moneyline</span>
-              <span class="leg-odds" style="background:rgba(100,100,100,0.15);color:#666;">-210</span>
-            </div>
-          </div>
-
-          <div class="parlay-payout" style="border:1px solid rgba(239,68,68,0.2);">
-            <div class="payout-item">
-              <span class="payout-label">Wagered</span>
-              <span class="payout-val" style="color:#ef4444;">-$10.00</span>
-            </div>
-            <div class="payout-arrow">→</div>
-            <div class="payout-item">
-              <span class="payout-label">Result</span>
-              <span class="payout-val payout-big" style="color:#ef4444;">LOST</span>
-            </div>
-          </div>
-        </div>
-
+  <!-- ────── DAY 3 — SUN MAR 29 ────── -->
+  <details class="day-block day-won-block">
+    <summary>
+      <span class="day-arrow">▶</span>
+      <div class="day-summary-info">
+        <div class="day-summary-title">Day 3 — Sunday, Mar 29</div>
+        <div class="day-summary-sub">Hancock O 3.5 K's (9!) + Cecconi O 4.5 K's (5) + Parlay</div>
       </div>
-    </details>
-
-    <!-- DAY 2 — Mar 28 -->
-    <details class="parlay-day" open>
-      <summary>
-        <span class="day-arrow">▶</span>
-        <div class="day-summary-info">
-          <div class="day-summary-title">Day 2 — Saturday, Mar 28</div>
-          <div class="day-summary-sub">2 parlays • 5-leg & 4-leg</div>
-        </div>
-        <div class="day-summary-result">
-          <div class="day-summary-record record-loss">0-2 ❌</div>
-          <div class="day-summary-amount">-$37.00</div>
-        </div>
-      </summary>
-      <div class="parlay-day-content">
-
-        <!-- Parlay 1 -->
-        <div class="parlay-card" style="opacity:0.7;">
-          <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">5 Leg Parlay — LOST ❌</div>
-          <div class="parlay-odds" style="color:#ef4444;">+1290</div>
-          
-          <div class="legs-list">
-            <div class="leg">
-              <span class="leg-icon">✅</span>
-              <span class="leg-text">TB @ STL Over 7.5 Runs <span style="color:#10b981;font-size:11px;">(Total: 11)</span></span>
-              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
-            </div>
-            <div class="leg">
-              <span class="leg-icon">✅</span>
-              <span class="leg-text">Chicago Cubs ML <span style="color:#10b981;font-size:11px;">(CHC 10, WSH 2)</span></span>
-              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
-            </div>
-            <div class="leg">
-              <span class="leg-icon">✅</span>
-              <span class="leg-text">Toronto Blue Jays ML <span style="color:#10b981;font-size:11px;">(TOR 8, OAK 7)</span></span>
-              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
-            </div>
-            <div class="leg">
-              <span class="leg-icon">❌</span>
-              <span class="leg-text" style="color:#ef4444;">Baltimore Orioles ML <span style="font-size:11px;">(BAL 1, MIN 4)</span></span>
-              <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
-            </div>
-            <div class="leg">
-              <span class="leg-icon">❌</span>
-              <span class="leg-text" style="color:#ef4444;">PIT @ NYM Over 7.5 Runs <span style="font-size:11px;">(Total: 2)</span></span>
-              <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
-            </div>
-          </div>
-
-          <img src="parlay1-2026-03-28.jpg" alt="5 Leg Parlay Slip" class="parlay-slip-img">
-
-          <div class="parlay-payout" style="border:1px solid rgba(239,68,68,0.2);">
-            <div class="payout-item">
-              <span class="payout-label">Wagered</span>
-              <span class="payout-val" style="color:#ef4444;">-$20.00</span>
-            </div>
-            <div class="payout-arrow">→</div>
-            <div class="payout-item">
-              <span class="payout-label">Result</span>
-              <span class="payout-val payout-big" style="color:#ef4444;">LOST</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Parlay 2 -->
-        <div class="parlay-card" style="opacity:0.7;">
-          <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">4 Leg Parlay — LOST ❌</div>
-          <div class="parlay-odds" style="color:#ef4444;">+668</div>
-          
-          <div class="legs-list">
-            <div class="leg">
-              <span class="leg-icon">✅</span>
-              <span class="leg-text">TB @ STL Over 7.5 Runs <span style="color:#10b981;font-size:11px;">(Total: 11)</span></span>
-              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
-            </div>
-            <div class="leg">
-              <span class="leg-icon">✅</span>
-              <span class="leg-text">Pete Crow-Armstrong 2+ H+R+RBI <span style="color:#10b981;font-size:11px;">(HIT)</span></span>
-              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
-            </div>
-            <div class="leg">
-              <span class="leg-icon">✅</span>
-              <span class="leg-text">Toronto Blue Jays ML <span style="color:#10b981;font-size:11px;">(TOR 8, OAK 7)</span></span>
-              <span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span>
-            </div>
-            <div class="leg">
-              <span class="leg-icon">❌</span>
-              <span class="leg-text" style="color:#ef4444;">Baltimore Orioles ML <span style="font-size:11px;">(BAL 1, MIN 4)</span></span>
-              <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span>
-            </div>
-          </div>
-
-          <img src="parlay2-2026-03-28.jpg" alt="4 Leg Parlay Slip" class="parlay-slip-img">
-
-          <div class="parlay-payout" style="border:1px solid rgba(239,68,68,0.2);">
-            <div class="payout-item">
-              <span class="payout-label">Wagered</span>
-              <span class="payout-val" style="color:#ef4444;">-$17.00</span>
-            </div>
-            <div class="payout-arrow">→</div>
-            <div class="payout-item">
-              <span class="payout-label">Result</span>
-              <span class="payout-val payout-big" style="color:#ef4444;">LOST</span>
-            </div>
-          </div>
-        </div>
-
+      <div class="day-summary-result">
+        <div class="day-summary-record record-win">PROPS WON ✅</div>
+        <div class="day-summary-amount">$10 → $31.66</div>
       </div>
-    </details>
+    </summary>
+    <div class="day-content">
 
-    </details>
-
-    <!-- DAY 4 — Mon Mar 30 (Parlay) -->
-    <details class="prop-day" open>
-      <summary>
-        <span class="day-arrow">▶</span>
-        <div class="day-summary-info">
-          <div class="day-summary-title">Day 4 — Monday, Mar 30</div>
-          <div class="day-summary-sub">2-Leg K Parlay • Ashcraft O 5.5 + Harrison O 5.5</div>
+      <!-- Prop: Hancock -->
+      <div class="prop-card" style="margin-bottom:16px;border-color:rgba(16,185,129,0.3);">
+        <div class="badge" style="background:linear-gradient(135deg,#059669,#10b981);">✅ PROP — WON</div>
+        <div class="player-name">Emerson Hancock</div>
+        <div class="prop-type">Seattle Mariners — Pitcher</div>
+        <div class="line-box">
+          <span class="over" style="color:#10b981;">9 K's</span>
+          <span class="line-detail">Strikeouts (needed 3.5)</span>
+          <span class="odds-badge" style="background:rgba(16,185,129,0.2);color:#10b981;">CASHED 💰</span>
         </div>
-        <div class="day-summary-result">
-          <div class="day-summary-record record-pending">PENDING ⏳</div>
-          <div class="day-summary-amount">$31.00 → $86.15</div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="num">6.4</div><div class="lbl">K/9</div></div>
+          <div class="stat-box"><div class="num">4.0</div><div class="lbl">K/Start</div></div>
+          <div class="stat-box"><div class="num">4.9</div><div class="lbl">ERA</div></div>
+          <div class="stat-box"><div class="num">🔥🔥</div><div class="lbl">Conf.</div></div>
         </div>
-      </summary>
-      <div class="prop-day-content">
-
-        <div class="prop-card" style="margin-bottom:16px;border-color:rgba(234,179,8,0.3);">
-          <div class="badge" style="background:linear-gradient(135deg,#d97706,#f59e0b);">⏳ Day 4 — PENDING</div>
-          <div class="player-name">Braxton Ashcraft</div>
-          <div class="prop-type">Pittsburgh Pirates — Pitcher</div>
-
-          <div class="line-box">
-            <span class="over" style="color:#f59e0b;">O 5.5</span>
-            <span class="line-detail">Strikeouts</span>
-            <span class="odds-badge" style="background:rgba(234,179,8,0.2);color:#f59e0b;">-146</span>
-          </div>
-
-          <div class="stats-grid">
-            <div class="stat-box">
-              <div class="num">PIT</div>
-              <div class="lbl">vs CIN</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">6:41</div>
-              <div class="lbl">PM ET</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">+177</div>
-              <div class="lbl">Parlay</div>
-            </div>
-          </div>
-
-          <p style="margin-top:12px;color:#999;font-size:13px;">Reds lineup is swing-happy and K-prone. Ashcraft should get deep enough to clear 5.5 with room to spare. Cincinnati's aggressive approach plays right into his hand.</p>
-          <div class="confidence">
-            <span class="confidence-label">Confidence:</span>
-            <span style="font-size:16px;">🔥🔥🔥</span>
-            <span style="color:#555;font-size:11px;">(3/5) — Solid matchup</span>
-          </div>
+        <div class="analysis">
+          <p>Hancock went OFF — <strong style="color:#10b981;">9 strikeouts</strong> against the Guardians. Needed 3.5. Dominant.</p>
         </div>
-
-        <div class="prop-card" style="border-color:rgba(234,179,8,0.3);">
-          <div class="badge" style="background:linear-gradient(135deg,#d97706,#f59e0b);">⏳ Day 4 — PENDING</div>
-          <div class="player-name">Kyle Harrison</div>
-          <div class="prop-type">Milwaukee Brewers — Pitcher</div>
-
-          <div class="line-box">
-            <span class="over" style="color:#f59e0b;">O 5.5</span>
-            <span class="line-detail">Strikeouts</span>
-            <span class="odds-badge" style="background:rgba(234,179,8,0.2);color:#f59e0b;">-154</span>
-          </div>
-
-          <div class="stats-grid">
-            <div class="stat-box">
-              <div class="num">MIL</div>
-              <div class="lbl">vs TB</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">7:41</div>
-              <div class="lbl">PM ET</div>
-            </div>
-            <div class="stat-box">
-              <div class="num">+177</div>
-              <div class="lbl">Parlay</div>
-            </div>
-          </div>
-
-          <p style="margin-top:12px;color:#999;font-size:13px;">Harrison at home against a Rays lineup that strikes out at a high clip. Fastball-slider combo has been sharp. Tampa's K tendencies favor the over.</p>
-          <div class="confidence">
-            <span class="confidence-label">Confidence:</span>
-            <span style="font-size:16px;">🔥🔥🔥</span>
-            <span style="color:#555;font-size:11px;">(3/5) — Solid matchup</span>
-          </div>
-        </div>
-
-        <img src="parlay-2026-03-30.jpg" alt="Mar 30 Parlay Slip" class="parlay-slip-img">
-
-        <div class="parlay-payout" style="border:1px solid rgba(234,179,8,0.2);">
-          <div class="payout-row"><span>Wager</span><span class="payout-val">$31.00</span></div>
-          <div class="payout-row"><span>Payout</span><span class="payout-val">$86.15</span></div>
-          <div class="payout-row"><span>Status</span><span class="payout-val payout-big" style="color:#f59e0b;">PENDING ⏳</span></div>
-        </div>
-
       </div>
-    </details>
 
-  </div>
+      <!-- Prop: Cecconi -->
+      <div class="prop-card" style="margin-bottom:16px;border-color:rgba(16,185,129,0.3);">
+        <div class="badge" style="background:linear-gradient(135deg,#059669,#10b981);">✅ PROP — WON</div>
+        <div class="player-name">Slade Cecconi</div>
+        <div class="prop-type">Cleveland Guardians — Pitcher</div>
+        <div class="line-box">
+          <span class="over" style="color:#10b981;">5 K's</span>
+          <span class="line-detail">Strikeouts (needed 4.5)</span>
+          <span class="odds-badge" style="background:rgba(16,185,129,0.2);color:#10b981;">CASHED 💰</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="num">7.43</div><div class="lbl">K/9</div></div>
+          <div class="stat-box"><div class="num">4.7</div><div class="lbl">K/Start</div></div>
+          <div class="stat-box"><div class="num">4.3</div><div class="lbl">ERA</div></div>
+          <div class="stat-box"><div class="num">🔥🔥</div><div class="lbl">Conf.</div></div>
+        </div>
+        <div class="analysis">
+          <p>Cecconi got <strong style="color:#10b981;">5 strikeouts</strong> — just over the 4.5 line. Close but it counts.</p>
+        </div>
+      </div>
+
+      <!-- Parlay: Holmes + Braves LOST -->
+      <div class="parlay-card" style="opacity:0.7;">
+        <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">2-Leg SGP — LOST ❌</div>
+        <div class="parlay-odds parlay-odds-2" style="color:#ef4444;">+144</div>
+        <div class="legs-list">
+          <div class="leg">
+            <span class="leg-icon">❌</span>
+            <span class="leg-text" style="color:#ef4444;">Grant Holmes O 4.5 K's <span style="font-size:11px;">(Did not cover)</span></span>
+            <span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">-102</span>
+          </div>
+          <div class="leg">
+            <span class="leg-icon">—</span>
+            <span class="leg-text" style="color:#666;">Atlanta Braves ML</span>
+            <span class="leg-odds" style="background:rgba(100,100,100,0.15);color:#666;">-210</span>
+          </div>
+        </div>
+        <div class="payout-box" style="border:1px solid rgba(239,68,68,0.2);">
+          <div class="payout-item">
+            <span class="payout-label">Wagered</span>
+            <span class="payout-val" style="color:#ef4444;">-$10.00</span>
+          </div>
+          <div class="payout-arrow">→</div>
+          <div class="payout-item">
+            <span class="payout-label">Result</span>
+            <span class="payout-val payout-big" style="color:#ef4444;">LOST</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ────── DAY 2 — SAT MAR 28 ────── -->
+  <details class="day-block day-lost-block">
+    <summary>
+      <span class="day-arrow">▶</span>
+      <div class="day-summary-info">
+        <div class="day-summary-title">Day 2 — Saturday, Mar 28</div>
+        <div class="day-summary-sub">Burke O 14.5 Outs + 2 Bonus Parlays</div>
+      </div>
+      <div class="day-summary-result">
+        <div class="day-summary-record record-loss">ALL LOST ❌</div>
+        <div class="day-summary-amount">-$56.43 total</div>
+      </div>
+    </summary>
+    <div class="day-content">
+
+      <!-- Prop: Burke -->
+      <div class="prop-card" style="margin-bottom:16px;border-color:rgba(239,68,68,0.2);opacity:0.8;">
+        <div class="badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">🔴 PROP — LOST</div>
+        <div class="player-name">Sean Burke</div>
+        <div class="prop-type">Chicago White Sox — Pitcher</div>
+        <div class="line-box">
+          <span class="over" style="color:#ef4444;">12 of 15</span>
+          <span class="line-detail">Outs — Pulled in 4th</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="num">6.1</div><div class="lbl">IP/Start</div></div>
+          <div class="stat-box"><div class="num">18.3</div><div class="lbl">Outs Avg</div></div>
+          <div class="stat-box"><div class="num">4.22</div><div class="lbl">ERA</div></div>
+          <div class="stat-box"><div class="num">🔥🔥🔥🔥</div><div class="lbl">Conf.</div></div>
+        </div>
+        <div class="slip" style="border-color:rgba(239,68,68,0.2);background:rgba(239,68,68,0.04);">
+          <div class="slip-label" style="color:#ef4444;">❌ Bet Slip</div>
+          <img src="prop-of-day-2026-03-28.jpg" alt="Burke Bet Slip">
+        </div>
+        <div class="analysis">
+          <p>Pulled in 4th with <strong style="color:#ef4444;">12 outs</strong> — needed 15. Stats were right, manager wasn't.</p>
+        </div>
+      </div>
+
+      <!-- Parlay 1: 5-leg -->
+      <div class="parlay-card" style="opacity:0.7;">
+        <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">5-Leg Parlay — LOST ❌</div>
+        <div class="parlay-odds" style="color:#ef4444;">+1290</div>
+        <div class="legs-list">
+          <div class="leg"><span class="leg-icon">✅</span><span class="leg-text">TB @ STL Over 7.5 <span style="color:#10b981;font-size:11px;">(11)</span></span><span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span></div>
+          <div class="leg"><span class="leg-icon">✅</span><span class="leg-text">Cubs ML <span style="color:#10b981;font-size:11px;">(10-2)</span></span><span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span></div>
+          <div class="leg"><span class="leg-icon">✅</span><span class="leg-text">Blue Jays ML <span style="color:#10b981;font-size:11px;">(8-7)</span></span><span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span></div>
+          <div class="leg"><span class="leg-icon">❌</span><span class="leg-text" style="color:#ef4444;">Orioles ML <span style="font-size:11px;">(1-4)</span></span><span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span></div>
+          <div class="leg"><span class="leg-icon">❌</span><span class="leg-text" style="color:#ef4444;">PIT @ NYM Over 7.5 <span style="font-size:11px;">(2)</span></span><span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span></div>
+        </div>
+        <img src="parlay1-2026-03-28.jpg" alt="5-Leg Slip" class="parlay-slip-img">
+        <div class="payout-box" style="border:1px solid rgba(239,68,68,0.2);">
+          <div class="payout-item"><span class="payout-label">Wagered</span><span class="payout-val" style="color:#ef4444;">-$20.00</span></div>
+          <div class="payout-arrow">→</div>
+          <div class="payout-item"><span class="payout-label">Result</span><span class="payout-val payout-big" style="color:#ef4444;">LOST</span></div>
+        </div>
+      </div>
+
+      <!-- Parlay 2: 4-leg -->
+      <div class="parlay-card" style="opacity:0.7;">
+        <div class="parlay-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444);">4-Leg Parlay — LOST ❌</div>
+        <div class="parlay-odds" style="color:#ef4444;">+668</div>
+        <div class="legs-list">
+          <div class="leg"><span class="leg-icon">✅</span><span class="leg-text">TB @ STL Over 7.5 <span style="color:#10b981;font-size:11px;">(11)</span></span><span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span></div>
+          <div class="leg"><span class="leg-icon">✅</span><span class="leg-text">Crow-Armstrong 2+ H+R+RBI <span style="color:#10b981;font-size:11px;">(HIT)</span></span><span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span></div>
+          <div class="leg"><span class="leg-icon">✅</span><span class="leg-text">Blue Jays ML <span style="color:#10b981;font-size:11px;">(8-7)</span></span><span class="leg-odds" style="background:rgba(16,185,129,0.15);color:#10b981;">HIT</span></div>
+          <div class="leg"><span class="leg-icon">❌</span><span class="leg-text" style="color:#ef4444;">Orioles ML <span style="font-size:11px;">(1-4)</span></span><span class="leg-odds" style="background:rgba(239,68,68,0.15);color:#ef4444;">MISS</span></div>
+        </div>
+        <img src="parlay2-2026-03-28.jpg" alt="4-Leg Slip" class="parlay-slip-img">
+        <div class="payout-box" style="border:1px solid rgba(239,68,68,0.2);">
+          <div class="payout-item"><span class="payout-label">Wagered</span><span class="payout-val" style="color:#ef4444;">-$17.00</span></div>
+          <div class="payout-arrow">→</div>
+          <div class="payout-item"><span class="payout-label">Result</span><span class="payout-val payout-big" style="color:#ef4444;">LOST</span></div>
+        </div>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ────── DAY 1 — THU MAR 27 ────── -->
+  <details class="day-block day-won-block">
+    <summary>
+      <span class="day-arrow">▶</span>
+      <div class="day-summary-info">
+        <div class="day-summary-title">Day 1 — Thursday, Mar 27</div>
+        <div class="day-summary-sub">Schlittler O 4.5 K's</div>
+      </div>
+      <div class="day-summary-result">
+        <div class="day-summary-record record-win">WON ✅</div>
+        <div class="day-summary-amount">$10 → $19.43</div>
+      </div>
+    </summary>
+    <div class="day-content">
+      <div class="prop-card" style="border-color:rgba(16,185,129,0.3);">
+        <div class="badge">✅ Day 1 — WON</div>
+        <div class="player-name">Cam Schlittler</div>
+        <div class="prop-type">Tampa Bay Rays — Pitcher</div>
+        <div class="line-box">
+          <span class="over">O 4.5</span>
+          <span class="line-detail">Strikeouts</span>
+          <span class="odds-badge">CASHED</span>
+        </div>
+        <div class="slip" style="border-color:rgba(16,185,129,0.2);">
+          <div class="slip-label" style="color:#10b981;">✅ Result: WON</div>
+          <div class="slip-grid">
+            <div class="slip-item"><div class="lbl">Wagered</div><div class="val">$10.00</div></div>
+            <div class="slip-item"><div class="lbl">Payout</div><div class="val">$19.43</div></div>
+          </div>
+        </div>
+        <div class="analysis">
+          <p>Schlittler came through. Bankroll doubled on Day 1. <strong style="color:#10b981;">+$9.43 profit.</strong></p>
+        </div>
+      </div>
+    </div>
+  </details>
 
   <!-- CTA -->
   <div style="text-align:center;margin:24px 0;">
@@ -1240,7 +712,7 @@ body {
 
   <!-- FOOTER -->
   <div class="footer">
-    <p>⚾ <strong>Outs & Odds</strong> — 1 play a day. Bankroll building. 👨‍🔬</p>
+    <p>⚾ <strong>Outs & Odds</strong> — Props & Parlays daily. Bankroll building. 👨‍🔬</p>
     <p style="margin-top:6px;">Not financial advice. Bet responsibly.</p>
   </div>
 </div>
